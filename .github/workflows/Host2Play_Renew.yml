@@ -64,7 +64,7 @@ jobs:
         id: renew_run
         continue-on-error: true
         env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN_8 }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: python -u main.py
 
@@ -120,13 +120,9 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: 拉取私有仓库
+      - name: 拉取仓库
         if: steps.need_retry.outputs.skip == 'false'
         uses: actions/checkout@v4
-        with:
-          repository: oyz6/scripts
-          token: ${{ secrets.REPO_TOKEN }}
-          path: .
 
       - name: 配置 Python 环境
         if: steps.need_retry.outputs.skip == 'false'
@@ -177,7 +173,7 @@ jobs:
         if: steps.need_retry.outputs.skip == 'false'
         id: renew_retry
         env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN_8 }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: python -u main.py
 
