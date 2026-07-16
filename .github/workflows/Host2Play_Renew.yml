@@ -64,7 +64,7 @@ jobs:
         id: renew_run
         continue-on-error: true
         env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN_8 }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: python -u main.py
 
